@@ -24,6 +24,11 @@
 - 对每个语法练习题, 都补充了注释和错误点.
 - 补充官方文档对各语法点的详细介绍(数据类型/基本操作等)
 
+> [解题进度](./exercises/)
+
+- [x] [ex001](./exercises/001_hello.zig) - [ex003](./exercises/)
+- [ ] [ex004](./exercises/) - [ex091](./exercises/091_async8.zig)
+
 ## 快速开始:
 
 > 准备:
