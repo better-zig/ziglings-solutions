@@ -34,8 +34,12 @@
 const std = @import("std");
 
 //
-// TODO X:
+// TODO X: 考察: 基本数据类型(有符号/无符号), 变量/常量区别
 //  - zig 基本数据类型: https://ziglang.org/documentation/master/#toc-Primitive-Types
+//  - const 常量类型, 赋值后, 值不可更改.
+//  - var 变量, 赋值后, 值可以变更.
+//  - u8, u32, 无符号类型, 值 >0
+//  - i8, i32, 有符号类型
 //
 pub fn main() void {
     var n: u8 = 50; //  todo x: const 是常量, 改成 var 变量
