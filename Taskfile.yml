@@ -1,0 +1,114 @@
+version: "3"
+
+################################################################################################
+
+# includes:
+#   basic:
+#     taskfile: ./packages/basic/Taskfile.yml
+#     dir: ./packages/basic/
+
+################################################################################################
+
+#
+# global vars: https://taskfile.dev/#/usage?id=variables
+#
+vars:
+  VAR1: "some-var"
+
+#
+# global env: https://taskfile.dev/#/usage?id=environment-variables
+#
+env:
+  ENV1: testing-env
+  PATH: $PATH:$HOME/.local/bin
+
+# env file:
+dotenv:
+  - .env
+
+################################################################################################
+
+tasks:
+  init:
+    cmds:
+      - echo "os init"
+      - task: setup
+
+  # for macos + m1:
+  install:zig:dev:
+    cmds:
+      - mkdir -p $HOME/.local/bin/;
+      - cd $HOME/.local/bin/; curl -L https://ziglang.org/builds/zig-macos-aarch64-0.10.0-dev.2617+47c4d4450.tar.xz | tar -xJ --strip-components=1 -C .;
+      - chmod +x $HOME/.local/bin/zig;
+      - zig version
+
+  install:zig:
+    cmds:
+      - brew install zig
+      - zig version
+      - brew install xz # for zig zls
+      - mkdir $HOME/zls && cd $HOME/zls && curl -L https://github.com/zigtools/zls/releases/download/0.9.0/x86_64-macos.tar.xz | tar -xJ --strip-components=1 -C .
+      - chmod +x $HOME/zls/zls
+      - sudo $HOME/zls/zls configure
+    ignore_error: true
+
+  #
+  # ref: https://github.com/nektro/zigmod
+  #
+  install:tools:
+    cmds:
+      - task: install:zigmod:m1
+
+  #
+  # ref: https://github.com/nektro/zigmod
+  #
+  # for macos + intel cpu
+  install:zigmod:intel:
+    cmds:
+      - mkdir -p $HOME/.local/bin/;
+      # - export PATH=$HOME/.local/bin:$PATH;
+      - curl  -L https://github.com/nektro/zigmod/releases/download/r80/zigmod-x86_64-macos -o $HOME/.local/bin/zigmod;
+      - chmod +x $HOME/.local/bin/zigmod;
+      - zigmod version
+
+  # for macos + m1 cpu
+  install:zigmod:m1:
+    cmds:
+      - mkdir -p $HOME/.local/bin/;
+      # - export PATH=$HOME/.local/bin:$PATH;
+      - curl  -L https://github.com/nektro/zigmod/releases/download/r80/zigmod-aarch64-macos -o $HOME/.local/bin/zigmod;
+      - chmod +x $HOME/.local/bin/zigmod;
+      - zigmod version
+
+  docs:
+    cmds:
+      - open https://ziglang.org/zh/learn/
+      - open https://ziglang.org/documentation/0.9.1/
+      - open https://aquila.red/
+
+  new:
+    cmds:
+      - mkdir ${NEW_PACKAGE_NAME}; cd ${NEW_PACKAGE_NAME}; zig init-exe
+    dir: packages/
+
+  new:lib:
+    cmds:
+      - mkdir ${NEW_PACKAGE_NAME}; cd ${NEW_PACKAGE_NAME}; zig init-lib
+    dir: packages/
+
+  run:
+    cmds:
+      - cd ${NEW_PACKAGE_NAME}; zig build run
+    dir: packages/
+
+  build:lib:
+    cmds:
+      - cd ${NEW_PACKAGE_NAME}; zig build test
+    dir: packages/
+
+  ###########################################################################
+
+  push:
+    cmds:
+      - git push origin solutions --tags
+      - repo_url=`git remote -v | grep push | awk -F ":" '{print $2}' | awk -F ".git " '{print "https://github.com/"$1}'`; open $repo_url
