@@ -16,6 +16,7 @@
 //
 const std = @import("std");
 
-fn main() void {
+/// todo x: 补充 pub 关键字
+pub fn main() void {
     std.debug.print("Hello world!\n", .{});
 }
