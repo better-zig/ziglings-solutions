@@ -22,15 +22,15 @@ pub fn main() void {
     const le = [_]u8{ 1, 3 };
     const et = [_]u8{ 3, 7 };
 
-    // (Problem 1)
+    // todo x: (Problem 1)
     // Please set this array concatenating the two arrays above.
     // It should result in: 1 3 3 7
-    const leet = ???;
+    const leet = le ++ et; // todo x: 合并数组
 
-    // (Problem 2)
+    // todo x: (Problem 2)
     // Please set this array using repetition.
     // It should result in: 1 0 0 1 1 0 0 1 1 0 0 1
-    const bit_pattern = [_]u8{ ??? } ** 3;
+    const bit_pattern = [_]u8{ 1, 0, 0, 1 } ** 3; // todo x: 数组元素, 重复3次
 
     // Okay, that's all of the problems. Let's see the results.
     //
@@ -44,6 +44,7 @@ pub fn main() void {
     //
     std.debug.print("LEET: ", .{});
 
+    // TODO x: 遍历元素 // 类似闭包(迭代器)写法
     for (leet) |n| {
         std.debug.print("{}", .{n});
     }
