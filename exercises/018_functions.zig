@@ -13,6 +13,9 @@
 //
 const std = @import("std");
 
+//
+// todo x: 自定义函数
+//
 pub fn main() void {
     // The new function deepThought() should return the number 42. See below.
     const answer: u8 = deepThought();
@@ -25,6 +28,6 @@ pub fn main() void {
 // We're just missing a couple things. One thing we're NOT missing is the
 // keyword "pub", which is not needed here. Can you guess why?
 //
-??? deepThought() ??? {
+fn deepThought() u8 { // todo x: 函数 + 返回值类型
     return 42; // Number courtesy Douglas Adams
 }

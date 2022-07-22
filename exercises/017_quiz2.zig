@@ -12,7 +12,7 @@
 const std = @import("std"); // todo x: 导入标准库
 
 //
-// todo x: for 遍历写法
+// todo x: while 练习
 //
 pub fn main() void { // todo x: 函数定义
     var i: u8 = 1;

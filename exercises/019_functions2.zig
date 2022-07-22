@@ -9,6 +9,9 @@
 //
 const std = @import("std");
 
+//
+// todo x: 自定义函数: 参数定义+类型
+//
 pub fn main() void {
     std.debug.print("Powers of two: {} {} {} {}\n", .{
         twoToThe(1),
@@ -22,7 +25,7 @@ pub fn main() void {
 // You'll need to figure out the parameter name and type that we're
 // expecting. The output type has already been specified for you.
 //
-fn twoToThe(???) u32 {
+fn twoToThe(my_number: u32) u32 { // todo x: 函数参数类型
     return std.math.pow(u32, 2, my_number);
     // std.math.pow(type, a, b) takes a numeric type and two
     // numbers of that type (or that can coerce to that type) and
