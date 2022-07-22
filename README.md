@@ -1,23 +1,25 @@
-# Ziglings
+# Ziglings Solutions
 
-Welcome to Ziglings! This project contains a series of tiny broken programs.
-By fixing them, you'll learn how to read and write
-[Zig](https://ziglang.org/)
-code.
+- Ziglings 解题报告
+- 持续更新
 
-![ziglings](https://user-images.githubusercontent.com/1458409/109398392-c1069500-790a-11eb-8ed4-7d7d74d32666.jpg)
+> 当前版本:
 
-Those tiny broken programs need your help! (You'll also save the planet from
-evil aliens and help some friendly elephants stick together, which is very
-sweet of you.)
+- zig 社区项目, 基本都是基于 zig dev 版本(不维护稳定版本).
+- so, 请使用 dev 版本, 更快追踪最新特性变更
 
-This project was directly inspired by the brilliant and fun
-[rustlings](https://github.com/rust-lang/rustlings)
-project for the [Rust](https://www.rust-lang.org/) language.
-Indirect inspiration comes from [Ruby Koans](http://rubykoans.com/)
-and the Little LISPer/Little Schemer series of books.
+```ruby
+➤ zig version
+0.10.0-dev.2617+47c4d4450
+
+```
 
 ## 说明:
+
+- 本 repo fork 原项目, 会持续同步更新.
+- 解题报告在 `solutions` 分支.
+
+> solutions 分支:
 
 - 对每个语法练习题, 都补充了注释和错误点.
 - 补充官方文档对各语法点的详细介绍(数据类型/基本操作等)
@@ -46,6 +48,9 @@ git checkout solutions
 > 验证:
 
 ```ruby
+# 切换本项目根目录
+cd this-repo-root/
+
 # 编译+运行, 交互式逐个修复有问题的测试题
 zig build
 
@@ -53,6 +58,25 @@ zig build
 task dev
 
 ```
+
+# Ziglings
+
+Welcome to Ziglings! This project contains a series of tiny broken programs.
+By fixing them, you'll learn how to read and write
+[Zig](https://ziglang.org/)
+code.
+
+![ziglings](https://user-images.githubusercontent.com/1458409/109398392-c1069500-790a-11eb-8ed4-7d7d74d32666.jpg)
+
+Those tiny broken programs need your help! (You'll also save the planet from
+evil aliens and help some friendly elephants stick together, which is very
+sweet of you.)
+
+This project was directly inspired by the brilliant and fun
+[rustlings](https://github.com/rust-lang/rustlings)
+project for the [Rust](https://www.rust-lang.org/) language.
+Indirect inspiration comes from [Ruby Koans](http://rubykoans.com/)
+and the Little LISPer/Little Schemer series of books.
 
 ## Intended Audience
 
