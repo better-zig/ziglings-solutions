@@ -25,7 +25,7 @@ pub fn main() void {
 
     // Please set the continue expression so that we get the desired
     // results in the print statement below.
-    while (n < 1000) : ??? {
+    while (n < 1000) : (n *= 2) { // todo x: while + 迭代步骤格式, 对应上个练习输出
         // Print the current number
         std.debug.print("{} ", .{n});
     }

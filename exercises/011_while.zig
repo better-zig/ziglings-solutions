@@ -17,11 +17,12 @@
 //
 const std = @import("std");
 
+// todo x: while 循环
 pub fn main() void {
     var n: u32 = 2;
 
     // Please use a condition that is true UNTIL "n" reaches 1024:
-    while (???) {
+    while (n < 1024) { // todo x: 遍历条件
         // Print the current number
         std.debug.print("{} ", .{n});
 

@@ -16,6 +16,7 @@
 //
 const std = @import("std");
 
+// todo x: while + continue 格式
 pub fn main() void {
     var n: u32 = 1;
 
@@ -24,8 +25,8 @@ pub fn main() void {
     while (n <= 20) : (n += 1) {
         // The '%' symbol is the "modulo" operator and it
         // returns the remainder after division.
-        if (n % 3 == 0) ???;
-        if (n % 5 == 0) ???;
+        if (n % 3 == 0) continue; // todo x: skip, 跳过
+        if (n % 5 == 0) continue; // TODO x: skip, 跳过
         std.debug.print("{} ", .{n});
     }
 
