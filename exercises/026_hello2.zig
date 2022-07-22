@@ -6,10 +6,11 @@
 const std = @import("std");
 
 // Take note that this main() definition now returns "!void" rather
-// than just "void". Since there's no specific error type, this means
+// than just "void".
+// Since there's no specific error type, this means
 // that Zig will infer the error type. This is appropriate in the case
 // of main(), but can have consequences elsewhere.
-pub fn main() !void {
+pub fn main() !void { // todo x: !void 类型,
 
     // We get a Writer for Standard Out so we can print() to it.
     const stdout = std.io.getStdOut().writer();
@@ -19,5 +20,10 @@ pub fn main() !void {
     // to be able to pass it up as a return value of main().
     //
     // We just learned of a single statement which can accomplish this.
-    stdout.print("Hello world!\n", .{});
+    try stdout.print("Hello world!\n", .{}); // todo x: try 来避免 Panic
+
+    // todo x: 捕捉报错
+    stdout.print("Hello world!\n", .{}) catch |err| {
+        std.debug.print("Error: {}", .{err});
+    };
 }

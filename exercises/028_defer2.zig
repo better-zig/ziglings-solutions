@@ -18,7 +18,7 @@ pub fn main() void {
 fn printAnimal(animal: u8) void {
     std.debug.print("(", .{});
 
-    std.debug.print(") ", .{}); // <---- how?!
+    defer std.debug.print(") ", .{}); // <---- how?! // todo x: 最后输出
 
     if (animal == 'g') {
         std.debug.print("Goat", .{});

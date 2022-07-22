@@ -17,9 +17,11 @@
 // useful in the next exercise.
 const std = @import("std");
 
+// todo x: defer 机制, 类似 go defer, 语义相同
 pub fn main() void {
     // Without changing anything else, please add a 'defer' statement
     // to this code so that our program prints "One Two\n":
-    std.debug.print("Two\n", .{});
+    defer std.debug.print("Two\n", .{}); // todo x: 类似 go defer 机制, 语义基本相同
+
     std.debug.print("One ", .{});
 }
