@@ -5,7 +5,7 @@
 //
 // which can be more compactly written as:
 //
-//     try canFail();
+//     try canFail(); // todo x: 使用 try 会捕捉 panic, 避免程序挂起. 类似其他语言的 try catch 机制
 //
 const std = @import("std");
 
@@ -22,13 +22,16 @@ pub fn main() void {
     std.debug.print("a={}, b={}, c={}\n", .{ a, b, c });
 }
 
+//
+// todo x: try 语句, 实现 try ... catch 机制, 手动管理 panic, 很灵活.
+//
 fn addFive(n: u32) MyNumberError!u32 {
     // This function needs to return any error which might come back from detect().
     // Please use a "try" statement rather than a "catch".
     //
-    var x = detect(n);
+    var x = try detect(n); // todo x: try 特性
 
-    return x + 5;
+    return x + 5; // TODO x: 数值计算
 }
 
 fn detect(n: u32) MyNumberError!u32 {

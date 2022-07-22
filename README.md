@@ -26,8 +26,18 @@
 
 > [解题进度](./exercises/)
 
-- [x] [ex001](./exercises/001_hello.zig) - [ex003](./exercises/)
-- [ ] [ex004](./exercises/) - [ex091](./exercises/091_async8.zig)
+- [x] [ex001](./exercises/001_hello.zig) - [ex020](./exercises/)
+- [ ] [ex020](./exercises/) - [ex091](./exercises/091_async8.zig)
+
+> 补充说明:
+
+- [ex001](./exercises/) - [ex008](./exercises/) : 简单数据类型(数组, 字符串基本操作)
+- [ex009](./exercises/) - [ex017](./exercises/017_quiz2.zig) : 控制逻辑语句(if/else, while, for 语法)
+- [ex018](./exercises/) - [ex020](./exercises/) : 函数定义(参数/返回值)
+- [ex021](./exercises/021_errors.zig) - [ex025](./exercises/025_errors5.zig) : 错误处理
+  - [ex022](./exercises/022_errors2.zig) : zig 的自定义错误+类型 union 并集写法, 非常风骚.
+  - zig 的错误处理, catch 语义, 融合了 go panic 机制+ 赋默认值, 很特别的设计
+  - try 语言, 实现了 常规语言的 try...catch 机制, 手动管理(忽略) panic.
 
 ## 快速开始:
 

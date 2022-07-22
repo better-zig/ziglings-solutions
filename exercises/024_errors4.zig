@@ -5,7 +5,7 @@
 // Catch lets us capture the error value and perform additional
 // actions with this form:
 //
-//     canFail() catch |err| {
+//     canFail() catch |err| {  // todo x: 类似 rust 的 match 机制
 //         if (err == FishError.TunaMalfunction) {
 //             ...
 //         }
@@ -37,6 +37,9 @@ pub fn main() void {
 //     detectProblems()  Returns the number or an error.
 //
 fn makeJustRight(n: u32) MyNumberError!u32 {
+    //
+    // todo x: 类似 rust 的 match 机制, 写法上, 没有 rust match 简洁
+    //
     return fixTooBig(n) catch |err| {
         return err;
     };
@@ -47,7 +50,6 @@ fn fixTooBig(n: u32) MyNumberError!u32 {
         if (err == MyNumberError.TooBig) {
             return 20;
         }
-
         return err;
     };
 }
@@ -59,7 +61,12 @@ fn fixTooSmall(n: u32) MyNumberError!u32 {
     // If we get a TooSmall error, we should return 10.
     // If we get any other error, we should return that error.
     // Otherwise, we return the u32 number.
-    return detectProblems(n) ???;
+    return detectProblems(n) catch |err| { // todo x: 错误处理
+        if (err == MyNumberError.TooSmall) {
+            return 10;
+        }
+        return err;
+    };
 }
 
 fn detectProblems(n: u32) MyNumberError!u32 {
