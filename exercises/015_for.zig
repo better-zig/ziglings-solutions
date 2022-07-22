@@ -10,12 +10,15 @@
 //
 const std = @import("std");
 
+//
+// todo x: for 遍历写法
+//
 pub fn main() void {
     const story = [_]u8{ 'h', 'h', 's', 'n', 'h' };
 
     std.debug.print("A Dramatic Story: ", .{});
 
-    for (???) |???| {
+    for (story) |scene| { // todo x: for 遍历写法, 类似闭包
         if (scene == 'h') std.debug.print(":-)  ", .{});
         if (scene == 's') std.debug.print(":-(  ", .{});
         if (scene == 'n') std.debug.print(":-|  ", .{});
