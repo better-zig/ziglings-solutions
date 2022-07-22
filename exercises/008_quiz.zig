@@ -11,7 +11,7 @@ const std = @import("std");
 
 pub fn main() void {
     // What is this nonsense? :-)
-    const letters = "YZhifg";
+    const letters = "YZhifg"; // todo x: 提取 Z,i, g , = 1,3,5
 
     // Note: usize is an unsigned integer type used for...sizes.
     // The exact size of usize depends on the target CPU
@@ -19,7 +19,7 @@ pub fn main() void {
     // the idiomatic type to use for array indexing.
     //
     // There IS a problem on this line, but 'usize' isn't it.
-    const x: usize = 1;
+    var x: usize = 1; // todo x: x 值下面被修改, 需改为变量
 
     // Note: When you want to declare memory (an array in this
     // case) without putting anything in it, you can set it to
@@ -32,11 +32,11 @@ pub fn main() void {
     // to begin with.
     lang[0] = letters[x];
 
-    x = 3;
-    lang[???] = letters[x];
+    x = 3; // todo x: 索引值变更, so, x 需是变量
+    lang[1] = letters[x];
 
-    x = ???;
-    lang[2] = letters[???];
+    x = 5;
+    lang[2] = letters[x];
 
     // We want to "Program in Zig!" of course:
     std.debug.print("Program in {s}!\n", .{lang});

@@ -13,11 +13,14 @@
 //
 const std = @import("std");
 
+//
+// todo x: 多行字符串格式: 使用 \\ 来拼接, 没有 Python 简洁
+//
 pub fn main() void {
     const lyrics =
-        Ziggy played guitar
-        Jamming good with Andrew Kelley
-        And the Spiders from Mars
+        \\Ziggy played guitar
+        \\Jamming good with Andrew Kelley
+        \\And the Spiders from Mars
     ;
 
     std.debug.print("{s}\n", .{lyrics});
