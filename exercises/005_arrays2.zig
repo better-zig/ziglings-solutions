@@ -18,6 +18,9 @@
 //
 const std = @import("std");
 
+//
+// todo x: 数组操作: 合并/重复元素/遍历
+//
 pub fn main() void {
     const le = [_]u8{ 1, 3 };
     const et = [_]u8{ 3, 7 };

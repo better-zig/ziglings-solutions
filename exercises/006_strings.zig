@@ -18,27 +18,31 @@
 //
 const std = @import("std");
 
+//
+// todo x: strings 类型: = byte array. // 基本操作, 和数组操作一致
+//
 pub fn main() void {
     const ziggy = "stardust";
 
-    // (Problem 1)
+    // todo x: (Problem 1)
     // Use array square bracket syntax to get the letter 'd' from
     // the string "stardust" above.
-    const d: u8 = ziggy[???];
+    const d: u8 = ziggy[4]; // todo x: 下标取元素
 
-    // (Problem 2)
+    // todo x: (Problem 2)
     // Use the array repeat '**' operator to make "ha ha ha ".
-    const laugh = "ha " ???;
+    const laugh = "ha " ** 3;
 
-    // (Problem 3)
+    // todo x: (Problem 3)
     // Use the array concatenation '++' operator to make "Major Tom".
     // (You'll need to add a space as well!)
     const major = "Major";
     const tom = "Tom";
-    const major_tom = major ??? tom;
+    const major_tom = major ++ " " ++ tom; // todo x: 字符串拼接
 
     // That's all the problems. Let's see our results:
-    std.debug.print("d={u} {s}{s}\n", .{ d, laugh, major_tom });
+    std.debug.print("d={u} {s}{s}\n", .{ d, laugh, major_tom }); // todo x: 字符串格式化方式
+
     // Keen eyes will notice that we've put 'u' and 's' inside the '{}'
     // placeholders in the format string above. This tells the
     // print() function to format the values as a UTF-8 character and

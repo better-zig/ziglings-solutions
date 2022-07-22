@@ -1,5 +1,9 @@
 # No Peeking! :-)
 
+- 这个目录是答案.
+- 😄 做不出来, 可以复查.
+- 不建议直接看答案.
+
 Welcome to the ziglings/patches directory. This is how ziglings is tested.
 
 The patches fix the broken exercises so that they work again, which means the
@@ -25,7 +29,6 @@ $ zig build -Dhealed [step]
 ```
 
 Éowyn tests all healed programs using this secret option.
-
 
 ## Gollum
 
