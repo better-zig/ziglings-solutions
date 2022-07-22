@@ -20,11 +20,14 @@
 //
 const std = @import("std");
 
+//
+// TODO x: 控制流程 if/else
+//
 pub fn main() void {
     const foo = 1;
 
     // Please fix this condition:
-    if (foo) {
+    if (foo == 1) { // todo x: 表达式判断
         // We want our program to print this message!
         std.debug.print("Foo is 1!\n", .{});
     } else {

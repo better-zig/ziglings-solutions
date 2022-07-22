@@ -9,6 +9,7 @@
 //
 const std = @import("std");
 
+// todo x: 字符串操作: 下标取元素, 赋值. undefined 未定义类型
 pub fn main() void {
     // What is this nonsense? :-)
     const letters = "YZhifg"; // todo x: 提取 Z,i, g , = 1,3,5
