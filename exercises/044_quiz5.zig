@@ -10,24 +10,29 @@
 //
 const std = @import("std");
 
+// todo x: 链表定义
 const Elephant = struct {
     letter: u8,
-    tail: *Elephant = undefined,
-    visited: bool = false,
+    tail: *Elephant = undefined, // todo x: 链表定义, 尾节点
+    visited: bool = false, // todo x: 节点已访问状态
 };
 
+// todo x: 链表定义 + 遍历
 pub fn main() void {
     var elephantA = Elephant{ .letter = 'A' };
+
     // (Please add Elephant B here!)
+    var elephantB = Elephant{ .letter = 'B' }; // TODO X: 链表节点
     var elephantC = Elephant{ .letter = 'C' };
 
     // Link the elephants so that each tail "points" to the next elephant.
     // They make a circle: A->B->C->A...
     elephantA.tail = &elephantB;
     // (Please link Elephant B's tail to Elephant C here!)
+    elephantB.tail = &elephantC; // todo x: 链表节点串联
     elephantC.tail = &elephantA;
 
-    visitElephants(&elephantA);
+    visitElephants(&elephantA); // todo x: 链表遍历
 
     std.debug.print("\n", .{});
 }
