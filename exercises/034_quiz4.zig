@@ -9,10 +9,10 @@ const std = @import("std");
 
 const NumError = error{IllegalNumber};
 
-pub fn main() void {
+pub fn main() !void { // todo x: 返回值类型
     const stdout = std.io.getStdOut().writer();
 
-    const my_num: u32 = getNumber();
+    const my_num: u32 = try getNumber(); // todo x: 捕捉 panic
 
     try stdout.print("my_num={}\n", .{my_num});
 }

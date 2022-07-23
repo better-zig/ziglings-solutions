@@ -20,7 +20,7 @@
 const std = @import("std");
 
 // Please complete the enum!
-const Ops = enum { ??? };
+const Ops = enum { inc, pow, dec }; // todo x: 枚举类型
 
 pub fn main() void {
     const operations = [_]Ops{
@@ -45,7 +45,8 @@ pub fn main() void {
             Ops.pow => {
                 current_value *= current_value;
             },
-            // No "else" needed! Why is that?
+
+            // No "else" needed! Why is that? // todo x: 枚举类型,值元素是确定的
         }
 
         std.debug.print("{} ", .{current_value});
