@@ -31,11 +31,11 @@ pub fn main() void {
 
     // Please define pointer "p" so that it can point to EITHER foo or
     // bar AND change the value it points to!
-    ??? p: ??? = undefined;
+    var p: *u8 = undefined; // todo x: 定义指针变量(可以改变指向), 方便后续更改
 
-    p = &foo;
+    p = &foo; // todo x: 指向变量1
     p.* += 1;
-    p = &bar;
+    p = &bar; // todo x: 指向变量2
     p.* += 1;
     std.debug.print("foo={}, bar={}\n", .{ foo, bar });
 }

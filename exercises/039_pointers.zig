@@ -15,22 +15,23 @@
 //     *u8        the type of a pointer to a u8 value
 //     &foo       a reference to foo
 //     bar        a pointer to the value at foo
-//     bar.*      the value 5 (the dereferenced value "at" bar)
+//     bar.*      the value 5 (the dereferenced value "at" bar) // todo x: 指针解引用, 取出值
 //
 // We'll see why pointers are useful in a moment. For now, see if you
 // can make this example work!
 //
 const std = @import("std");
 
+// todo x: 指针类型
 pub fn main() void {
     var num1: u8 = 5;
-    var num1_pointer: *u8 = &num1;
+    var num1_pointer: *u8 = &num1; // TODO x: 指针
 
     var num2: u8 = undefined;
 
     // Please make num2 equal 5 using num1_pointer!
     // (See the "cheatsheet" above for ideas.)
-    num2 = ???;
+    num2 = num1_pointer.*; // todo x: 指针解引用, 取出值
 
     std.debug.print("num1: {}, num2: {}\n", .{ num1, num2 });
 }

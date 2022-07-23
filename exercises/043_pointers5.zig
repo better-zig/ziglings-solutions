@@ -57,17 +57,17 @@ pub fn main() void {
 
     // FIX ME!
     // Please pass our Character "glorp" to printCharacter():
-    printCharacter(???);
+    printCharacter(&glorp); // todo x: 传入引用类型(地址)
 }
 
 // Note how this function's "c" parameter is a pointer to a Character struct.
-fn printCharacter(c: *Character) void {
+fn printCharacter(c: *Character) void { // todo x: 指针类型(结构体指针), 函数入参
 
     // Here's something you haven't seen before: when switching an enum, you
     // don't have to write the full enum name. Zig understands that ".wizard"
     // means "Class.wizard" when we switch on a Class enum value:
     const class_name = switch (c.class) {
-        .wizard => "Wizard",
+        .wizard => "Wizard", // todo x: 枚举类型的枚举值, 可以简写.
         .thief => "Thief",
         .bard => "Bard",
         .warrior => "Warrior",

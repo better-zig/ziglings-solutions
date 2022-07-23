@@ -9,12 +9,12 @@ pub fn main() void {
     var more_nums = [_]u8{ 1, 1, 1, 1 };
 
     // Let's pass a reference to num to our function and print it:
-    makeFive(&num);
+    makeFive(&num); // todo x: 传入引用(地址) = c 语言, 取地址操作
     std.debug.print("num: {}, ", .{num});
 
     // Now something interesting. Let's pass a reference to a
     // specific array value:
-    makeFive(&more_nums[2]);
+    makeFive(&more_nums[2]); // todo x: 传入引用(地址) = c 语言, 取地址操作
 
     // And print the array:
     std.debug.print("more_nums: ", .{});
@@ -27,6 +27,6 @@ pub fn main() void {
 
 // This function should take a reference to a u8 value and set it
 // to 5.
-fn makeFive(x: *u8) void {
-    ??? = 5; // fix me!
+fn makeFive(x: *u8) void { // todo x: 指针变量, 作为函数入参
+    x.* = 5; // fix me! // todo x: 指针解引用, 赋值修改
 }
