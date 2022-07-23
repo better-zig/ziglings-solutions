@@ -22,7 +22,7 @@ const std = @import("std");
 // health, experience) are all values of a particular size. Add them
 // together and you have the size of the struct as a whole.
 
-const Character = struct {
+const Character = struct { // TODO x: 自定义类型, 字段全部为数值类型
     gold: u32 = 0,
     health: u8 = 100,
     experience: u32 = 0,
@@ -34,7 +34,7 @@ const Character = struct {
 // RAM when your program runs. The relative location of this data in
 // memory is hard-coded and neither the address nor the value changes.
 
-const the_narrator = Character{
+const the_narrator = Character{ // todo x: 全局常量, 值不可更改
     .gold = 12,
     .health = 99,
     .experience = 9000,
@@ -44,7 +44,7 @@ const the_narrator = Character{
 // this data won't change, but the data itself can since this is a var
 // and not a const.
 
-var global_wizard = Character{};
+var global_wizard = Character{}; // todo x: 全局变量, 值可更改
 
 // A function is instruction code at a particular address. Function
 // parameters in Zig are always immutable. They are stored in "the
@@ -65,7 +65,7 @@ pub fn main() void {
     // because each instance of glorp is mutable and therefore unique
     // to the invocation of this function.
 
-    var glorp = Character{
+    var glorp = Character{ // todo x: 变量的生存周期, 分配在栈空间
         .gold = 30,
     };
 
@@ -87,7 +87,7 @@ pub fn main() void {
     // Let's assign the std.debug.print function to a const named
     // "print" so that we can use this new name later!
 
-    const print = ???;
+    const print = std.debug.print; // todo x: 赋值
 
     // Now let's look at assigning and pointing to values in Zig.
     //
@@ -119,7 +119,7 @@ pub fn main() void {
     // from glorp_access2 looks just like accessing it from glorp
     // itself.
 
-    var glorp_access2: *Character = &glorp;
+    var glorp_access2: *Character = &glorp; // todo x: 指针变量
     glorp_access2.gold = 222;
     print("2:{}!. ", .{glorp.gold == glorp_access2.gold});
 
@@ -129,7 +129,7 @@ pub fn main() void {
     // pointer can't change what it's POINTING AT, but the value at
     // the address it points to is still mutable! So we CAN change it.
 
-    const glorp_access3: *Character = &glorp;
+    const glorp_access3: *Character = &glorp; // todo x: 指针常量, 指向地址不可变, 但可以更改该地址的内容值
     glorp_access3.gold = 333;
     print("3:{}!. ", .{glorp.gold == glorp_access3.gold});
 
@@ -152,14 +152,14 @@ pub fn main() void {
     print("XP before:{}, ", .{glorp.experience});
 
     // Fix 1 of 2 goes here:
-    levelUp(glorp, reward_xp);
+    levelUp(&glorp, reward_xp); // TODO x: 取地址
 
     print("after:{}.\n", .{glorp.experience});
 }
 
 // Fix 2 of 2 goes here:
-fn levelUp(character_access: Character, xp: u32) void {
-    character_access.experience += xp;
+fn levelUp(character_access: *Character, xp: u32) void { // todo x: 指针参数, 更改内容
+    character_access.experience += xp; // todo x: 通过指针, 修改内容, 类似 c 语言操作
 }
 
 // And there's more!

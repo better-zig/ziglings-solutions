@@ -8,7 +8,7 @@
 //
 // Zig has at least four ways of expressing "no value":
 //
-// * undefined
+// * undefined // todo x: 未定义
 //
 //       var foo: u8 = undefined;
 //
@@ -17,7 +17,7 @@
 //       _yet_. Any type may be set to undefined, but attempting
 //       to read or use that value is _always_ a mistake.
 //
-// * null
+// * null // TODO x: 空值
 //
 //       var foo: ?u8 = null;
 //
@@ -26,9 +26,9 @@
 //       shown above. When foo equals null, that's not a value of type
 //       u8. It means there is _no value_ of type u8 in foo at all!
 //
-// * error
+// * error // todo x: 自定义错误
 //
-//       var foo: MyError!u8 = BadError;
+//       var foo: MyError!u8 = BadError; // todo x: 存在自定义 error, 默认初始化为 error 值
 //
 //       Errors are _very_ similar to nulls. They _are_ a value, but
 //       they usually indicate that the "real value" you were looking
@@ -37,7 +37,7 @@
 //       a u8 value OR an error. There is _no value_ of type u8 in foo
 //       when it's set to an error!
 //
-// * void
+// * void // todo x: 空类型, 不是 空值(null)
 //
 //       var foo: void = {};
 //
@@ -62,13 +62,13 @@
 //
 const std = @import("std");
 
-const Err = error{Cthulhu};
+const Err = error{Cthulhu}; // todo x: 自定义 error 类型
 
 pub fn main() void {
-    var first_line1: *const [16]u8 = ???;
+    var first_line1: *const [16]u8 = undefined; // todo x: 未定义
     first_line1 = "That is not dead";
 
-    var first_line2: Err!*const [21]u8 = ???;
+    var first_line2: Err!*const [21]u8 = Err.Cthulhu; // todo x: 有默认 error 类型, 赋值默认 error 值
     first_line2 = "which can eternal lie";
 
     std.debug.print("{s} {s} / ", .{ first_line1, first_line2 });
@@ -76,8 +76,8 @@ pub fn main() void {
     printSecondLine();
 }
 
-fn printSecondLine() ??? {
-    var second_line2: ?*const [18]u8 = ???;
+fn printSecondLine() void {
+    var second_line2: ?*const [18]u8 = null; // todo x: 指针, 允许空值
     second_line2 = "even death may die";
 
     std.debug.print("And with strange aeons {s}.\n", .{second_line2.?});
