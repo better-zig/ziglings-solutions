@@ -36,6 +36,7 @@ const Character = struct {
     class: Class,
     gold: u32,
     experience: u32,
+    health: u8, // todo x:
 };
 
 pub fn main() void {
@@ -44,6 +45,7 @@ pub fn main() void {
         .class = Class.wizard,
         .gold = 20,
         .experience = 10,
+        .health = 100, // todo x:
     };
 
     // Glorp gains some gold.

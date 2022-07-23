@@ -15,6 +15,7 @@ const Class = enum {
     warrior,
 };
 
+// todo x: 结构体类型
 const Character = struct {
     class: Class,
     gold: u32,
@@ -32,6 +33,14 @@ pub fn main() void {
         .health = 100,
         .experience = 10,
     };
+
+    chars[1] = Character{
+        .class = Class.bard,
+        .gold = 10,
+        .health = 100,
+        .experience = 20,
+    };
+
 
     // Please add "Zump the Loud" with the following properties:
     //
