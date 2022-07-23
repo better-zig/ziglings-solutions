@@ -27,7 +27,10 @@ const std = @import("std");
 pub fn main() void {
     const lang_chars = [_]u8{ 26, 9, 7, 42 };
 
+    // todo x: 迭代
     for (lang_chars) |c| {
+
+        // TODO x: 类似 rust match
         switch (c) {
             1 => std.debug.print("A", .{}),
             2 => std.debug.print("B", .{}),
@@ -42,6 +45,10 @@ pub fn main() void {
             // ... we don't need everything in between ...
             25 => std.debug.print("Y", .{}),
             26 => std.debug.print("Z", .{}),
+
+            // todo x: 缺省匹配
+            else => std.debug.print("?", .{}),
+
             // Switch statements must be "exhaustive" (there must be a
             // match for every possible value).  Please add an "else"
             // to this switch to print a question mark "?" when c is

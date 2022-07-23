@@ -25,6 +25,8 @@ pub fn main() void {
     var current_value: u32 = 0;
 
     for (operations) |op| {
+
+        // TODO x:
         switch (op) {
             1 => {
                 current_value += 1;
@@ -35,6 +37,9 @@ pub fn main() void {
             3 => {
                 current_value *= current_value;
             },
+
+            // todo x: 无法访问, else 语句, 始终都要添加, 完备性
+            else => unreachable,
         }
 
         std.debug.print("{} ", .{current_value});

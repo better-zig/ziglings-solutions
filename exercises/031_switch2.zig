@@ -29,11 +29,14 @@ pub fn main() void {
             // ...
             25 => 'Y',
             26 => 'Z',
+
+            else => '!', // todo x: 缺省匹配
+
             // As in the last exercise, please add the 'else' clause
             // and this time, have it return an exclamation mark '!'.
         };
 
-        std.debug.print("{c}", .{real_char});
+        std.debug.print("{c}", .{real_char}); // todo x: 强制按照字符串格式打印
         // Note: "{c}" forces print() to display the value as a character.
         // Can you guess what happens if you remove the "c"? Try it!
     }
