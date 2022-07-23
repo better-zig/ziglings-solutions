@@ -11,7 +11,7 @@ const std = @import("std");
 
 const Elephant = struct {
     letter: u8,
-    tail: ?*Elephant = null,
+    tail: ?*Elephant = null, // todo x: 尾节点, 允许空值
     trunk: ?*Elephant = null,
     visited: bool = false,
 
@@ -27,7 +27,13 @@ const Elephant = struct {
     // Your Elephant trunk methods go here!
     // ---------------------------------------------------
 
-    ???
+    pub fn getTrunk(self: *Elephant) *Elephant { // todo x: 类似 tail 方法
+        return self.trunk.?; // Remember, this means "orelse unreachable"
+    }
+
+    pub fn hasTrunk(self: *Elephant) bool {
+        return (self.trunk != null);
+    }
 
     // ---------------------------------------------------
 

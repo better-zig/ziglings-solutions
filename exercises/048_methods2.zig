@@ -6,7 +6,7 @@ const std = @import("std");
 
 const Elephant = struct {
     letter: u8,
-    tail: ?*Elephant = null,
+    tail: ?*Elephant = null, // todo x: 允许空值
     visited: bool = false,
 
     // New Elephant methods!
@@ -54,7 +54,7 @@ fn visitElephants(first_elephant: *Elephant) void {
 
         // This gets the next elephant or stops.
         if (e.hasTail()) {
-            e = e.???; // Which method do we want here?
+            e = e.tail.?; // Which method do we want here? // todo x: 尾节点, 迭代
         } else {
             break;
         }

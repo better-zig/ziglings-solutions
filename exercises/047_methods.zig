@@ -49,14 +49,14 @@ const std = @import("std");
 const Alien = struct {
     health: u8,
 
-    // We hate this method:
+    // We hate this method: // todo x: "类函数", 是类级别调用(静态方法), 区别, 是否含有 self 入参
     pub fn hatch(strength: u8) Alien {
         return Alien{
             .health = strength * 5,
         };
     }
 
-    // We love this method:
+    // We love this method: // todo x: "类方法", 是值级别调用
     pub fn zap(self: *Alien, damage: u8) void {
         self.health -= if (damage >= self.health) self.health else damage;
     }
@@ -84,7 +84,7 @@ pub fn main() void {
         for (aliens) |*alien| {
 
             // *** Zap the Alien Here! ***
-            ???.zap(heat_ray_strength);
+            alien.zap(heat_ray_strength); // todo x: 值调用
 
             // If the alien's health is still above 0, it's still alive.
             if (alien.health > 0) aliens_alive += 1;
