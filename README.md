@@ -26,8 +26,8 @@
 
 > [解题进度](./exercises/)
 
-- [x] [ex001](./exercises/001_hello.zig) - [ex020](./exercises/)
-- [ ] [ex020](./exercises/) - [ex091](./exercises/091_async8.zig)
+- [x] [ex001](./exercises/001_hello.zig) - [ex038](./exercises/)
+- [ ] [ex039](./exercises/) - [ex091](./exercises/091_async8.zig)
 
 > 补充说明:
 
@@ -38,6 +38,8 @@
   - [ex022](./exercises/022_errors2.zig) : zig 的自定义错误+类型 union 并集写法, 非常风骚.
   - zig 的错误处理, catch 语义, 融合了 go panic 机制+ 赋默认值, 很特别的设计
   - try 语言, 实现了 常规语言的 try...catch 机制, 手动管理(忽略) panic.
+- [ex027](./exercises/) - [ex027](./exercises/) : defer/errdefer 机制, 类似 go defer
+- [ex030](./exercises/) - [ex032](./exercises/) : switch + else, 类似 rust match
 
 ## 快速开始:
 
