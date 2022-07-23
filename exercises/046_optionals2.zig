@@ -7,11 +7,11 @@
 //
 // We also introduce the handy ".?" shortcut:
 //
-//     const foo = bar.?;
+//     const foo = bar.?; // todo x: 类似 dart null safety 判空操作
 //
 // is the same as
 //
-//     const foo = bar orelse unreachable;
+//     const foo = bar orelse unreachable; // todo x: 空默认值
 //
 // See if you can find where we use this shortcut below.
 //
@@ -21,7 +21,11 @@ const std = @import("std");
 
 const Elephant = struct {
     letter: u8,
-    tail: *Elephant = null, // Hmm... tail needs something...
+
+    //
+    // todo x: 允许空值, 对比 ex044 写法差异
+    //
+    tail: ?*Elephant = null, // Hmm... tail needs something... // todo x: 注意?位置, 在前面
     visited: bool = false,
 };
 
@@ -51,8 +55,8 @@ fn visitElephants(first_elephant: *Elephant) void {
         // We should stop once we encounter a tail that
         // does NOT point to another element. What can
         // we put here to make that happen?
-        if (e.tail == null) ???;
+        if (e.tail == null) break; // todo x: 判断
 
-        e = e.tail.?;
+        e = e.tail.?; // todo x: 空值检测, 节点 next 迭代
     }
 }

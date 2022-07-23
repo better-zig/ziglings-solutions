@@ -3,12 +3,12 @@
 // it might not. Zig has a neat way of expressing this idea
 // called Optionals. An optional type just has a '?' like this:
 //
-//     var foo: ?u32 = 10;
+//     var foo: ?u32 = 10; // todo x: 类型允许为空. (类似 dart null safety)
 //
 // Now foo can store a u32 integer OR null (a value storing
 // the cosmic horror of a value NOT EXISTING!)
 //
-//     foo = null;
+//     foo = null; // todo x: 空值
 //
 //     if (foo == null) beginScreaming();
 //
@@ -17,7 +17,7 @@
 // isn't null. One way to do this is to THREATEN IT with the
 // "orelse" statement.
 //
-//     var bar = foo orelse 2;
+//     var bar = foo orelse 2; // TODO X: 默认值
 //
 // Here, bar will either equal the u32 integer value stored in
 // foo, or it will equal 2 if foo was null.
@@ -29,12 +29,12 @@ pub fn main() void {
 
     // Please threaten the result so that answer is either the
     // integer value from deepThought() OR the number 42:
-    var answer: u8 = result;
+    var answer: u8 = result orelse 42; // todo x: 默认值
 
     std.debug.print("The Ultimate Answer: {}.\n", .{answer});
 }
 
-fn deepThought() ?u8 {
+fn deepThought() ?u8 { // todo x: 返回值允许为空
     // It seems Deep Thought's output has declined in quality.
     // But we'll leave this as-is. Sorry Deep Thought.
     return null;
