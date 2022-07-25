@@ -3,26 +3,26 @@
 // we can use in Zig. Roughly, in order we have:
 //
 //                          u8  single item
-//                         *u8  single-item pointer
-//                        []u8  slice (size known at runtime)
-//                       [5]u8  array of 5 u8s
-//                       [*]u8  many-item pointer (zero or more)
-//                 enum {a, b}  set of unique values a and b
-//                error {e, f}  set of unique error values e and f
-//      struct {y: u8, z: i32}  group of values y and z
-// union(enum) {a: u8, b: i32}  single value either u8 or i32
+//                         *u8  single-item pointer                // todo x: 指针类型
+//                        []u8  slice (size known at runtime)      // todo x: 切片类型
+//                       [5]u8  array of 5 u8s                     // todo x: 定长数组
+//                       [*]u8  many-item pointer (zero or more)   // todo x: 数组指针, 指向一片元素
+//                 enum {a, b}  set of unique values a and b       // todo x: 枚举类型
+//                error {e, f}  set of unique error values e and f // todo x: 自定义错误(类似枚举)
+//      struct {y: u8, z: i32}  group of values y and z            // todo x: 结构体
+// union(enum) {a: u8, b: i32}  single value either u8 or i32      // todo x: 联合体+枚举(混合类型)
 //
 // Values of any of the above types can be assigned as "var" or "const"
 // to allow or disallow changes (mutability) via the assigned name:
 //
-//     const a: u8 = 5; // immutable
-//       var b: u8 = 5; //   mutable
+//     const a: u8 = 5; // immutable  // todo x: 不可变类型
+//       var b: u8 = 5; //   mutable  // todo x: 可变类型 ( 类似 rust 的 mut )
 //
 // We can also make error unions or optional types from any of
 // the above:
 //
-//     var a: E!u8 = 5; // can be u8 or error from set E
-//     var b: ?u8 = 5;  // can be u8 or null
+//     var a: E!u8 = 5; // can be u8 or error from set E  // todo x: 自定义错误+标准类型的 union 类型
+//     var b: ?u8 = 5;  // can be u8 or null              // todo x: 空+标准类型(可空类型), 类似 dart 的 null safety 效果
 //
 // Knowing all of this, maybe we can help out a local hermit. He made
 // a little Zig program to help him plan his trips through the woods,
@@ -41,7 +41,7 @@
 const print = @import("std").debug.print;
 
 // The grue is a nod to Zork.
-const TripError = error{ Unreachable, EatenByAGrue };
+const TripError = error{ Unreachable, EatenByAGrue }; // todo x: 自定义错误
 
 // Let's start with the Places on the map. Each has a name and a
 // distance or difficulty of travel (as judged by the hermit).
@@ -50,7 +50,7 @@ const TripError = error{ Unreachable, EatenByAGrue };
 // assign the paths later. And why is that? Because paths contain
 // pointers to places and assigning them now would create a dependency
 // loop!
-const Place = struct {
+const Place = struct { // todo x: 结构体
     name: []const u8,
     paths: []const Path = undefined,
 };
@@ -94,8 +94,8 @@ const place_count = 6;
 // Now let's create all of the paths between sites. A path goes from
 // one place to another and has a distance.
 const Path = struct {
-    from: *const Place,
-    to: *const Place,
+    from: *const Place, // todo x: 指针
+    to: *const Place, // todo x: 指针
     dist: u8,
 };
 
@@ -107,72 +107,77 @@ const Path = struct {
 const a_paths = [_]Path{
     Path{
         .from = &a, // from: Archer's Point
-        .to = &b,   //   to: Bridge
+        .to = &b, //   to: Bridge
         .dist = 2,
     },
 };
 
+// todo x: 数组
 const b_paths = [_]Path{
     Path{
         .from = &b, // from: Bridge
-        .to = &a,   //   to: Archer's Point
+        .to = &a, //   to: Archer's Point
         .dist = 2,
     },
     Path{
         .from = &b, // from: Bridge
-        .to = &d,   //   to: Dogwood Grove
+        .to = &d, //   to: Dogwood Grove
         .dist = 1,
     },
 };
 
+// todo x: 数组
 const c_paths = [_]Path{
     Path{
         .from = &c, // from: Cottage
-        .to = &d,   //   to: Dogwood Grove
+        .to = &d, //   to: Dogwood Grove
         .dist = 3,
     },
     Path{
         .from = &c, // from: Cottage
-        .to = &e,   //   to: East Pond
+        .to = &e, //   to: East Pond
         .dist = 2,
     },
 };
 
+// todo x: 数组
 const d_paths = [_]Path{
     Path{
         .from = &d, // from: Dogwood Grove
-        .to = &b,   //   to: Bridge
+        .to = &b, //   to: Bridge
         .dist = 1,
     },
     Path{
         .from = &d, // from: Dogwood Grove
-        .to = &c,   //   to: Cottage
+        .to = &c, //   to: Cottage
         .dist = 3,
     },
     Path{
         .from = &d, // from: Dogwood Grove
-        .to = &f,   //   to: Fox Pond
+        .to = &f, //   to: Fox Pond
         .dist = 7,
     },
 };
 
+// todo x: 数组
 const e_paths = [_]Path{
     Path{
         .from = &e, // from: East Pond
-        .to = &c,   //   to: Cottage
+        .to = &c, //   to: Cottage
         .dist = 2,
     },
     Path{
         .from = &e, // from: East Pond
-        .to = &f,   //   to: Fox Pond
-        .dist = 1,  // (one-way down a short waterfall!)
+        .to = &f, //   to: Fox Pond
+        .dist = 1, // (one-way down a short waterfall!)
     },
 };
 
+// todo x: 数组
 const f_paths = [_]Path{
     Path{
         .from = &f, // from: Fox Pond
-        .to = &d,   //   to: Dogwood Grove
+        .to = &d, //   to: Dogwood Grove
         .dist = 7,
     },
 };
@@ -181,19 +186,20 @@ const f_paths = [_]Path{
 // "trip" out of it. A trip is a series of Places connected by Paths.
 // We use a TripItem union to allow both Places and Paths to be in the
 // same array.
-const TripItem = union(enum) {
+const TripItem = union(enum) { // todo x: 枚举+联合体, 混合类型
     place: *const Place,
     path: *const Path,
 
     // This is a little helper function to print the two different
     // types of item correctly.
     fn printMe(self: TripItem) void {
+        // print("{}", .{self});
         switch (self) {
             // Oops! The hermit forgot how to capture the union values
             // in a switch statement. Please capture both values as
             // 'p' so the print statements work!
-            .place => print("{s}", .{p.name}),
-            .path => print("--{}->", .{p.dist}),
+            .place => |p| print("{s}", .{p.name}), // todo x: 类似闭包+枚举
+            .path => |p| print("--{}->", .{p.dist}), // todo x: 类似闭包+枚举
         }
     }
 };
@@ -204,10 +210,10 @@ const TripItem = union(enum) {
 // find a better Path to reach a Place (shorter distance), we update the
 // entry. Entries also serve as a "todo" list which is how we keep
 // track of which paths to explore next.
-const NotebookEntry = struct {
-    place: *const Place,
-    coming_from: ?*const Place,
-    via_path: ?*const Path,
+const NotebookEntry = struct { // todo x: 结构体
+    place: *const Place, // todo x: 指针
+    coming_from: ?*const Place, // todo x: 可空指针
+    via_path: ?*const Path, // todo x: 可空指针
     dist_to_reach: u16,
 };
 
@@ -239,6 +245,10 @@ const HermitsNotebook = struct {
     // We'll often want to find an entry by Place. If one is not
     // found, we return null.
     fn getEntry(self: *HermitsNotebook, place: *const Place) ?*NotebookEntry {
+
+        //
+        // todo x: 遍历
+        //
         for (self.entries) |*entry, i| {
             if (i >= self.end_of_entries) break;
 
@@ -255,7 +265,7 @@ const HermitsNotebook = struct {
             // dereference and optional value "unwrapping" look
             // together. Remember that you return the address with the
             // "&" operator.
-            if (place == entry.*.?.place) return entry;
+            if (place == entry.*.?.place) return &entry.*.?; // todo x: 指针转换, 类似 c 语言语义
             // Try to make your answer this long:__________;
         }
         return null;
@@ -309,7 +319,7 @@ const HermitsNotebook = struct {
     //
     // Looks like the hermit forgot something in the return value of
     // this function. What could that be?
-    fn getTripTo(self: *HermitsNotebook, trip: []?TripItem, dest: *Place) void {
+    fn getTripTo(self: *HermitsNotebook, trip: []?TripItem, dest: *Place) TripError!void {
         // We start at the destination entry.
         const destination_entry = self.getEntry(dest);
 
@@ -351,12 +361,12 @@ const HermitsNotebook = struct {
     }
 };
 
-pub fn main() void {
+pub fn main() !void { // todo x: fix this,
     // Here's where the hermit decides where he would like to go. Once
     // you get the program working, try some different Places on the
     // map!
-    const start = &a;        // Archer's Point
-    const destination = &f;  // Fox Pond
+    const start = &a; // Archer's Point
+    const destination = &f; // Fox Pond
 
     // Store each Path array as a slice in each Place. As mentioned
     // above, we needed to delay making these references to avoid
@@ -411,9 +421,10 @@ pub fn main() void {
     // this is the first time we've actually used the destination!
     var trip = [_]?TripItem{null} ** (place_count * 2);
 
+    // TODO X:
     notebook.getTripTo(trip[0..], destination) catch |err| {
         print("Oh no! {}\n", .{err});
-        return;
+        return err;
     };
 
     // Print the trip with a little helper function below.
