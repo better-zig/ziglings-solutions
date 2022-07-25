@@ -30,10 +30,10 @@
 //
 const std = @import("std");
 
-const InsectStat = enum { flowers_visited, still_alive };
+const InsectStat = enum { flowers_visited, still_alive }; // todo x : 枚举类型
 
-const Insect = union(InsectStat) {
-    flowers_visited: u16,
+const Insect = union(InsectStat) { // todo x: 枚举+联合
+    flowers_visited: u16, // todo x: 联合的元素, 类型不同
     still_alive: bool,
 };
 
@@ -44,14 +44,14 @@ pub fn main() void {
     std.debug.print("Insect report! ", .{});
 
     // Could it really be as simple as just passing the union?
-    printInsect(???);
-    printInsect(???);
+    printInsect(ant);
+    printInsect(bee);
 
     std.debug.print("\n", .{});
 }
 
 fn printInsect(insect: Insect) void {
-    switch (???) {
+    switch (insect) {
         .still_alive => |a| std.debug.print("Ant alive is: {}. ", .{a}),
         .flowers_visited => |f| std.debug.print("Bee visited {} flowers. ", .{f}),
     }

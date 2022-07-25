@@ -15,7 +15,10 @@
 //
 const std = @import("std");
 
-const Insect = union(InsectStat) {
+//
+// todo x: 联合+枚举, 简写, 效果同上个例子
+//
+const Insect = union(enum) {
     flowers_visited: u16,
     still_alive: bool,
 };

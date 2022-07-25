@@ -42,7 +42,7 @@ const std = @import("std");
 // Insects will be represented by either bees or ants. Bees store
 // the number of flowers they've visited that day and ants just
 // store whether or not they're still alive.
-const Insect = union {
+const Insect = union { // todo x: 联合类型, 内部类型可变(共享内存)
     flowers_visited: u16,
     still_alive: bool,
 };
@@ -59,8 +59,8 @@ pub fn main() void {
     std.debug.print("Insect report! ", .{});
 
     // Oops! We've made a mistake here.
-    printInsect(ant, AntOrBee.c);
-    printInsect(bee, AntOrBee.c);
+    printInsect(ant, AntOrBee.a); // todo x: fix
+    printInsect(bee, AntOrBee.b); // todo x: fix
 
     std.debug.print("\n", .{});
 }
