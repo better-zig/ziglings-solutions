@@ -18,10 +18,12 @@
 const print = @import("std").debug.print;
 
 pub fn main() void {
-    var zig = [_]u8 {
-        0o131,     // octal
-        0b1101000, // binary
-        0x66,      // hex
+
+    // todo x: 二进制/十进制/十六进制, 加法
+    var zig = [_]u8{
+        0o131 + 0o1, // octal
+        0b1101000 + 0b1, // binary
+        0x66 + 0x1, // hex
     };
 
     print("{s} is cool.\n", .{zig});
