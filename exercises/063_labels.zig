@@ -59,7 +59,7 @@ const foods = 4;
 
 const Food = struct {
     name: []const u8,
-    requires: [ingredients]bool,
+    requires: [ingredients]bool, // todo x: 数组
 };
 
 //                 Chili  Macaroni  Tomato Sauce  Cheese
@@ -102,6 +102,7 @@ pub fn main() void {
     // application!
     const wanted_ingredients = [_]u8{ 0, 3 }; // Chili, Cheese
 
+    // todo x: 数组遍历
     // Look at each Food on the menu...
     const meal = food_loop: for (menu) |food| {
 
@@ -128,8 +129,8 @@ pub fn main() void {
         // wanted for this Food.
         //
         // Please return this Food from the loop.
-        break;
-    };
+        break food; // todo x: 返回值
+    } else menu[0]; // 默认值
     // ^ Oops! We forgot to return Mac & Cheese as the default
     // Food when the requested ingredients aren't found.
 
