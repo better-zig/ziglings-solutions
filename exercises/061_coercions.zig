@@ -5,7 +5,7 @@
 // 1. Types can always be made _more_ restrictive.
 //
 //    var foo: u8 = 5;
-//    var p1: *u8 = &foo;
+//    var p1: *u8 = &foo;  // todo x: 指针, 取地址
 //    var p2: *const u8 = p1; // mutable to immutable
 //
 // 2. Numeric types can coerce to _larger_ types.
@@ -21,13 +21,13 @@
 //
 //    const arr: [3]u8 = [3]u8{5, 6, 7};
 //    const s: []const u8 = &arr;  // to slice
-//    const p: [*]const u8 = &arr; // to many-item pointer
+//    const p: [*]const u8 = &arr; // to many-item pointer // todo x: 指针类型, 指向一片元素
 //
 // 4. Single-item mutable pointers can coerce to single-item
 //    pointers pointing to an array of length 1. (Interesting!)
 //
 //    var five: u8 = 5;
-//    var a_five: *[1]u8 = &five;
+//    var a_five: *[1]u8 = &five; // TODO X: 限定长度
 //
 // 5. Payload types and null coerce to optionals.
 //
@@ -50,7 +50,7 @@
 //    of this, but a full and proper explanation is coming your
 //    way soon in the third-eye-opening subject of comptime.
 //
-// 9. Tagged unions coerce to the current tagged enum.
+// 9. Tagged unions coerce to the current tagged enum. // todo x: 混合类型 = 联合体 + 枚举
 //
 // 10. Enums coerce to a tagged union when that tagged field is a
 //     zero-length type that has only one value (like void).
@@ -67,12 +67,12 @@ const print = @import("std").debug.print;
 pub fn main() void {
     var letter: u8 = 'A';
 
-    const my_letter:   ???   = &letter;
+    const my_letter: ?*[1]u8 = &letter; // todo x: 限定长度, 转换成 数组指针
     //               ^^^^^^^
     //           Your type here.
     // Must coerce from &letter (which is a *u8).
     // Hint: Use coercion Rules 4 and 5.
 
     // When it's right, this will work:
-    print("Letter: {u}\n", .{my_letter.?.*[0]});
+    print("Letter: {u}\n", .{my_letter.?.*[0]}); // todo x: 数组下标方式访问
 }
