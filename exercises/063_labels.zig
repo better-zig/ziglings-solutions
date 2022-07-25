@@ -130,7 +130,7 @@ pub fn main() void {
         //
         // Please return this Food from the loop.
         break food; // todo x: 返回值
-    } else menu[0]; // 默认值
+    } else menu[0]; // todo x: 指定默认值
     // ^ Oops! We forgot to return Mac & Cheese as the default
     // Food when the requested ingredients aren't found.
 

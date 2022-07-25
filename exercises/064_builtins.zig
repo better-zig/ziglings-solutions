@@ -1,5 +1,5 @@
 //
-// The Zig compiler provides "builtin" functions. You've already
+// The Zig compiler provides "builtin" functions. You've already // todo x: 编译器内建函数: @import() @intCast()  @enumToInt()
 // gotten used to seeing an @import() at the top of every
 // Ziglings exercise.
 //
@@ -13,7 +13,7 @@
 // compiler, such as type introspection (the ability to examine
 // type properties from within a program).
 //
-// Zig currently contains 101 builtin functions. We're certainly
+// Zig currently contains 101 builtin functions. We're certainly // todo x: zig 当前有 101 个编译器内建函数, 编译期参数
 // not going to cover them all, but we can look at some
 // interesting ones.
 //
@@ -26,6 +26,7 @@
 const print = @import("std").debug.print;
 
 pub fn main() void {
+
     // The first builtin, alphabetically, is:
     //
     //   @addWithOverflow(comptime T: type, a: T, b: T, result: *T) bool
@@ -40,7 +41,8 @@ pub fn main() void {
     const b: u4 = 0b0101;
     var my_result: u4 = undefined;
     var overflowed: bool = undefined;
-    overflowed = @addWithOverflow(u4, a, b, &my_result);
+    overflowed = @addWithOverflow(u4, a, b, &my_result); // todo x: 内建函数(首个参数, 传入类型)
+
     //
     // The print() below will produce: "1101 + 0101 = 0010 (true)".
     // Let's make sense of this answer by counting up from 1101:
@@ -69,6 +71,6 @@ pub fn main() void {
     // Now it's your turn. See if you can fix this attempt to use
     // this builtin to reverse the bits of a u8 integer.
     const input: u8 = 0b11110000;
-    const tupni: u8 = @bitReverse(input);
+    const tupni: u8 = @bitReverse(u8, input); // todo x: 编译器内建函数, 编译期参数.(传入首个参数, 类型参数), 有点像多态(泛型)
     print("{b:0>8} backwards is {b:0>8}.\n", .{ input, tupni });
 }
