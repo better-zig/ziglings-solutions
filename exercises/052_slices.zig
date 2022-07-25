@@ -15,7 +15,7 @@
 // start item and provide a length. Here are slices of our digit
 // array:
 //
-//     const foo = digits[0..1];  // 0
+//     const foo = digits[0..1];  // 0  // todo x: 数组的灵活切片(语法糖)
 //     const bar = digits[3..9];  // 3 4 5 6 7 8
 //     const baz = digits[5..9];  // 5 6 7 8
 //     const all = digits[0..];   // 0 1 2 3 4 5 6 7 8 9
@@ -28,12 +28,13 @@
 //
 const std = @import("std");
 
+// todo x: 针对已定义数组, 灵活切片(语法糖)
 pub fn main() void {
-    var cards = [8]u8{ 'A', '4', 'K', '8', '5', '2', 'Q', 'J' };
+    var cards = [8]u8{ 'A', '4', 'K', '8', '5', '2', 'Q', 'J' }; // todo x: 定长数组定义
 
     // Please put the first 4 cards in hand1 and the rest in hand2.
-    const hand1: []u8 = cards[???];
-    const hand2: []u8 = cards[???];
+    const hand1: []u8 = cards[0..4]; // todo x: 切片定义, 数组的灵活切片(语法糖)
+    const hand2: []u8 = cards[4..];
 
     std.debug.print("Hand1: ", .{});
     printHand(hand1);
@@ -43,7 +44,7 @@ pub fn main() void {
 }
 
 // Please lend this function a hand. A u8 slice hand, that is.
-fn printHand(hand: ???) void {
+fn printHand(hand: []u8) void {
     for (hand) |h| {
         std.debug.print("{u} ", .{h});
     }
