@@ -51,7 +51,6 @@
 - [ex045]() - [ex046]() : optional 语义, 类似 `dart Null Safety 语义`.
   - ⭐⭐
 - [ex047]() - [ex049]() : struct method 语义, 类似 `python class + self 语义`, 区分 类函数(静态) vs 类方法.
-  - ⭐⭐
 - [ex050]() - [ex051]() : value 类型: `undefined vs null vs errors vs void` 语义区别
   - ⭐⭐⭐
 - [ex052]() - [ex053]() : 数组切片 + 指针
@@ -60,6 +59,14 @@
   - ⭐⭐⭐⭐⭐
 - [ex055]() - [ex058]() : union 联合体类型(类 c 语言), 联合体+枚举 混合类型.
   - ⭐⭐
+- [ex059]() - [ex060]() : 数值计算: 整型(2 进制, 8 进制, 16 进制) vs 浮点型
+  - ⭐⭐
+- [ex061]() : 定长数组指针
+  - ⭐
+- [ex062]() - [ex063]() : for + break label + else 语义
+  - ⭐⭐⭐
+- [ex064]() - [ex064]() : builtin functions 编译器内建函数, 实现类似 `go reflect 反射`等语义
+  - ⭐⭐⭐⭐
 
 ## 快速开始:
 
