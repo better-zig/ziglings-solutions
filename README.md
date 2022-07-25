@@ -26,8 +26,8 @@
 
 > [解题进度](./exercises/)
 
-- [x] [ex001](./exercises/001_hello.zig) - [ex038](./exercises/)
-- [ ] [ex039](./exercises/) - [ex091](./exercises/091_async8.zig)
+- [x] [ex001](./exercises/001_hello.zig) - [ex059](./exercises/)
+- [ ] [ex059](./exercises/) - [ex091](./exercises/091_async8.zig)
 
 > 补充说明:
 
@@ -35,11 +35,25 @@
 - [ex009](./exercises/) - [ex017](./exercises/017_quiz2.zig) : 控制逻辑语句(if/else, while, for 语法)
 - [ex018](./exercises/) - [ex020](./exercises/) : 函数定义(参数/返回值)
 - [ex021](./exercises/021_errors.zig) - [ex025](./exercises/025_errors5.zig) : 错误处理
+  - ⭐⭐⭐⭐⭐
   - [ex022](./exercises/022_errors2.zig) : zig 的自定义错误+类型 union 并集写法, 非常风骚.
   - zig 的错误处理, catch 语义, 融合了 go panic 机制+ 赋默认值, 很特别的设计
   - try 语言, 实现了 常规语言的 try...catch 机制, 手动管理(忽略) panic.
 - [ex027](./exercises/) - [ex027](./exercises/) : defer/errdefer 机制, 类似 go defer
+  - ⭐⭐⭐
 - [ex030](./exercises/) - [ex032](./exercises/) : switch + else, 类似 rust match
+- [ex033]() : if/err 语义
+- [ex34]() : try catch
+- [ex35]() - [ex36]() : enum 枚举类型
+- [ex37]() - [ex38]() : struct 结构体类型
+- [ex39]() - [ex44]() : pointer 指针类型, 取地址操作(类似 C 语言), 指针参数, 传引用类型
+  - ⭐⭐⭐⭐⭐
+- [ex045]() - [ex046]() : optional 语义, 类似 `dart Null Safety 语义`.
+  - ⭐⭐
+- [ex047]() - [ex049]() : struct method 语义, 类似 `python class + self 语义`, 区分 类函数(静态) vs 类方法.
+  - ⭐⭐
+- [ex050]() - [ex051]() : value 类型: `undefined vs null vs errors vs void` 语义区别
+  - ⭐⭐⭐
 
 ## 快速开始:
 
