@@ -26,8 +26,8 @@
 
 > [解题进度](./exercises/)
 
-- [x] [ex001](./exercises/001_hello.zig) - [ex075](./exercises/)
-- [ ] [ex075](./exercises/) - [ex091](./exercises/091_async8.zig)
+- [x] [ex001](./exercises/001_hello.zig) - [ex083](./exercises/)
+- [ ] [ex083](./exercises/) - [ex091](./exercises/091_async8.zig)
 
 > 补充说明:
 
@@ -76,7 +76,12 @@
   - [ex072]() : 内联优化, `inline while`.
   - [ex073]() : 任意表达式, 加 `comptime` 前缀, 强制指定编译期阶段检测(分配).
   - [ex074]() - [ex075]() : 默认省略 `comptime` 前缀的场景.
-- [ex076]() - [ex078]() : 字符串类型, 尾哨兵机制. 兼容 `C 字符串` 语义, `@ptrCast()` 强制类型转换.
+- [ex076]() - [ex078]() : 字符串类型, `sentinel` 尾哨兵机制. 兼容 `C 字符串` 语义, `@ptrCast()` 强制类型转换.
+  - ⭐⭐⭐
+- [ex079]() : 命名规则扩展, `@"x-y-z"` 作为命名字段. 比较无聊的`语法糖`.
+- [ex080]() - [ex083](): 泛型数据结构 + 鸭子类型(多态/反射) - `匿名结构体 + @typeName(@TypeOf()) + @as() + @field()`,
+  - ⭐⭐⭐
+- [ex084]() - [ex091]() : 异步编程, `async`.
   - ⭐⭐⭐⭐⭐
 
 ## 快速开始:
