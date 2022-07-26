@@ -4,17 +4,17 @@
 //
 // The following contexts are already IMPLICITLY evaluated at
 // compile time, and adding the 'comptime' keyword would be
-// superfluous, redundant, and smelly:
+// superfluous, redundant, and smelly: // todo x: 在如下上下文, 添加 comptime 前缀, 是多余的
 //
-//    * The global scope (outside of any function in a source file)
-//    * Type declarations of:
+//    * The global scope (outside of any function in a source file) // todo x: 全局作用域
+//    * Type declarations of: // 类型声明
 //        * Variables
 //        * Functions (types of parameters and return values)
 //        * Structs
 //        * Unions
 //        * Enums
-//    * The test expressions in inline for and while loops
-//    * An expression passed to the @cImport() builtin
+//    * The test expressions in inline for and while loops // 内联部分
+//    * An expression passed to the @cImport() builtin  // 导入 C 语言模块的 表达式
 //
 // Work with Zig for a while, and you'll start to develop an
 // intuition for these contexts. Let's work on that now.
@@ -30,16 +30,16 @@ const print = @import("std").debug.print;
 
 // Being in the global scope, everything about this value is
 // implicitly required to be known compile time.
-const llama_count = 5;
+const llama_count = 5; // todo x: 全局作用域, 默认都是编译期分配, 无需添加 comptime 前缀
 
 // Again, this value's type and size must be known at compile
 // time, but we're letting the compiler infer both from the
 // return type of a function.
-const llamas = makeLlamas(llama_count);
+const llamas = makeLlamas(llama_count); // todo x: 全局作用域, 函数声明, 无需添加.
 
 // And here's the function. Note that the return value type
 // depends on one of the input arguments!
-fn makeLlamas(count: usize) [count]u8 {
+fn makeLlamas(comptime count: usize) [count]u8 { // todo x: 返回值依赖 函数入参, 故需要添加 comptime 给入参
     var temp: [count]u8 = undefined;
     var i = 0;
 
@@ -52,6 +52,7 @@ fn makeLlamas(count: usize) [count]u8 {
 }
 
 pub fn main() void {
+    print("llamas = {d}\n", .{llamas}); // todo x: 数值类型
     print("My llama value is {}.\n", .{llamas[2]});
 }
 //
