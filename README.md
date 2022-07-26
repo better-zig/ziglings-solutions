@@ -26,8 +26,8 @@
 
 > [解题进度](./exercises/)
 
-- [x] [ex001](./exercises/001_hello.zig) - [ex059](./exercises/)
-- [ ] [ex059](./exercises/) - [ex091](./exercises/091_async8.zig)
+- [x] [ex001](./exercises/001_hello.zig) - [ex075](./exercises/)
+- [ ] [ex075](./exercises/) - [ex091](./exercises/091_async8.zig)
 
 > 补充说明:
 
@@ -65,8 +65,17 @@
   - ⭐
 - [ex062]() - [ex063]() : for + break label + else 语义
   - ⭐⭐⭐
-- [ex064]() - [ex064]() : builtin functions 编译器内建函数, 实现类似 `go reflect 反射`等语义
+- [ex064]() - [ex065]() : builtin functions 编译器内建函数, 实现类似 `go reflect 反射`等语义
   - ⭐⭐⭐⭐
+- [ex066]() - [ex075]() : builtin functions 编译期阶段的高阶用法
+  - ⭐⭐⭐⭐⭐
+  - [ex066]() - [ex067]() : 变量定义, 加 `comptime` 前缀, 强制指定编译期检查. (类似 rust 生命周期标记, 改变变量生命周期)
+  - [ex068]() - [ex069]() : 函数参数, 加 `comptime` 前缀, 强制指定编译期检查.
+  - [ex070]() : 函数参数, 指定为 `anytype` 类型, 配合 `@TypeOf() + @hasDecl()`实现多态(鸭子类型). 类似 go + reflect 反射效果.(用法也类似)
+  - [ex071]() : 内联优化, `inline for`, 类似 `C/C++` 内联概念.
+  - [ex072]() : 内联优化, `inline while`.
+  - [ex073]() : 任意表达式, 加 `comptime` 前缀, 强制指定编译期阶段检测(分配).
+  - [ex074]() - [ex075] : 默认省略 `comptime` 前缀的场景.
 
 ## 快速开始:
 
