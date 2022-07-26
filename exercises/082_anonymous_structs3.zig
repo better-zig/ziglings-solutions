@@ -2,9 +2,9 @@
 // You can even create anonymous struct literals without field
 // names:
 //
-//     .{
+//     .{ // todo x: 匿名结构体定义
 //         false,
-//         @as(u32, 15);
+//         @as(u32, 15); // todo x: 指定类型
 //         @as(i64, 67.12);
 //     }
 //
@@ -18,9 +18,9 @@
 // syntax error), we have to quote them with the @"" syntax.
 // Example:
 //
-//     const foo = .{ true, false };
+//     const foo = .{ true, false }; // todo x: 匿名元组定义
 //
-//     print("{} {}\n", .{foo.@"0", foo.@"1"});
+//     print("{} {}\n", .{foo.@"0", foo.@"1"}); // todo x: 匿名元组的元素访问方式
 //
 // The example above prints "true false".
 //
@@ -39,10 +39,10 @@ const print = @import("std").debug.print;
 
 pub fn main() void {
     // A "tuple":
-    const foo = .{
+    const foo = .{ // todo x: 匿名元组写法
         true,
         false,
-        @as(i32, 42),
+        @as(i32, 42), // todo x: 指定类型
         @as(f32, 3.141592),
     };
 
@@ -65,7 +65,7 @@ pub fn main() void {
 //
 // You'll be putting this together. But don't worry, everything
 // you need is documented in the comments.
-fn printTuple(tuple: anytype) void {
+fn printTuple(tuple: anytype) void { // todo x: 多态/鸭子类型/反射
     // 1. Get a list of fields in the input 'tuple'
     // parameter. You'll need:
     //
@@ -82,14 +82,14 @@ fn printTuple(tuple: anytype) void {
     //         @typeInfo(Circle).Struct.fields
     //
     // This will be an array of StructFields.
-    const fields = ???;
+    const fields = @typeInfo(@TypeOf(tuple)).Struct.fields; // todo x: 获取字段列表
 
     // 2. Loop through each field. This must be done at compile
     // time.
     //
     //     Hint: remember 'inline' loops?
     //
-    for (fields) |field| {
+    inline for (fields) |field| { // todo x: 内联
         // 3. Print the field's name, type, and value.
         //
         //     Each 'field' in this loop is one of these:
@@ -117,9 +117,9 @@ fn printTuple(tuple: anytype) void {
         //
         // The first field should print as: "0"(bool):true
         print("\"{s}\"({s}):{any} ", .{
-            field.???,
-            field.???,
-            ???,
+            field.name,
+            field.field_type,
+            @field(tuple, field.name), // todo x: 动态求值写法, 注意首个参数, 是 typle 本身
         });
     }
 }
