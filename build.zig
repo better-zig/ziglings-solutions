@@ -542,7 +542,12 @@ pub fn build(b: *Builder) void {
 
     const use_healed = b.option(bool, "healed", "Run exercises from patches/healed") orelse false;
 
-    for (exercises) |ex| {
+    // todo x: skip 已经解决的练习题
+    const skip_solved = 0;
+    for (exercises) |ex, i| {
+        // TODO X: 跳过已经完成
+        if (i < skip_solved) continue;
+
         const base_name = ex.baseName();
         const file_path = std.fs.path.join(b.allocator, &[_][]const u8{
             if (use_healed) "patches/healed" else "exercises", ex.main_file,
