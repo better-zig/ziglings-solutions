@@ -15,7 +15,7 @@
 // Or you can let them remain entirely anonymous as in this
 // example:
 //
-//     fn bar(foo: anytype) void {
+//     fn bar(foo: anytype) void { // todo x: 动态类型
 //         print("a:{} b:{}\n", .{foo.a, foo.b});
 //     }
 //
@@ -30,7 +30,7 @@ const print = @import("std").debug.print;
 
 pub fn main() void {
     printCircle(.{
-        .center_x = @as(u32, 205),
+        .center_x = @as(u32, 205), // todo x @as() 内建方法, 指定类型
         .center_y = @as(u32, 187),
         .radius = @as(u32, 12),
     });
@@ -38,7 +38,7 @@ pub fn main() void {
 
 // Please complete this function which prints an anonymous struct
 // representing a circle.
-fn printCircle(???) void {
+fn printCircle(circle: anytype) void { // todo x: 多态, 鸭子类型
     print("x:{} y:{} radius:{}\n", .{
         circle.center_x,
         circle.center_y,
