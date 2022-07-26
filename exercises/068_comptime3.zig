@@ -1,14 +1,14 @@
 //
 // You can also put 'comptime' before a function parameter to
 // enforce that the argument passed to the function must be known
-// at compile time. We've actually been using a function like
+// at compile time. We've actually been using a function like // todo x: 函数参数, 强制在编译期指定
 // this the entire time, std.debug.print():
 //
-//     fn print(comptime fmt: []const u8, args: anytype) void
+//     fn print(comptime fmt: []const u8, args: anytype) void // todo x: 函数参数, 强制在编译期指定
 //
-// Notice that the format string parameter 'fmt' is marked as
+// Notice that the format string parameter 'fmt' is marked as // todo x: 有点类似 rust 生命周期
 // 'comptime'.  One of the neat benefits of this is that the
-// format string can be checked for errors at compile time rather
+// format string can be checked for errors at compile time rather // TODO X: 指定参数在编译期检查, 避免运行时 Panic
 // than crashing at runtime.
 //
 // (The actual formatting is done by std.fmt.format() and it
@@ -27,7 +27,8 @@ const Schooner = struct {
     bowsprit_length: u32 = 34,
     mainmast_height: u32 = 95,
 
-    fn scaleMe(self: *Schooner, comptime scale: u32) void {
+    // todo x:
+    fn scaleMe(self: *Schooner, comptime scale: u32) void { // todo x: 注意函数参数, 强制指定在编译期检查
         var my_scale = scale;
 
         // We did something neat here: we've anticipated the
@@ -43,7 +44,7 @@ const Schooner = struct {
         //
         // Please change this so that it sets a 0 scale to 1
         // instead.
-        if (my_scale == 0) @compileError("Scale 1:0 is not valid!");
+        if (my_scale == 0) my_scale = 1; // TODO X: 编译期报错, 去掉 Panic, 改为赋值
 
         self.scale = my_scale;
         self.hull_length /= my_scale;
@@ -61,7 +62,7 @@ const Schooner = struct {
     }
 };
 
-pub fn main() void {
+pub fn main() !void {
     var whale = Schooner{ .name = "Whale" };
     var shark = Schooner{ .name = "Shark" };
     var minnow = Schooner{ .name = "Minnow" };
@@ -69,11 +70,12 @@ pub fn main() void {
     // Hey, we can't just pass this runtime variable as an
     // argument to the scaleMe() method. What would let us do
     // that?
-    var scale: u32 = undefined;
+    comptime var scale: u32 = undefined; // todo x: 指定为编译期类型+检查
 
     scale = 32; // 1:32 scale
 
-    minnow.scaleMe(scale);
+    print("scale = {}\n", .{scale});
+    minnow.scaleMe(scale); // todo x
     minnow.printMe();
 
     scale -= 16; // 1:16 scale

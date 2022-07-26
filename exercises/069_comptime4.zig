@@ -2,7 +2,7 @@
 // One of the more common uses of 'comptime' function parameters is
 // passing a type to a function:
 //
-//     fn foo(comptime MyType: type) void { ... }
+//     fn foo(comptime MyType: type) void { ... } // todo x: 函数参数指定: 编译期传入 类型参数
 //
 // In fact, types are ONLY available at compile time, so the
 // 'comptime' keyword is required here.
@@ -16,7 +16,7 @@ const print = @import("std").debug.print;
 pub fn main() void {
     // Here we declare arrays of three different types and sizes
     // at compile time from a function call. Neat!
-    const s1 = makeSequence(u8, 3);  // creates a [3]u8
+    const s1 = makeSequence(u8, 3); // creates a [3]u8
     const s2 = makeSequence(u32, 5); // creates a [5]u32
     const s3 = makeSequence(i64, 7); // creates a [7]i64
 
@@ -42,12 +42,12 @@ pub fn main() void {
 //     2) Sets the size of the array of type T (which is the
 //        sequence we're creating and returning).
 //
-fn makeSequence(comptime T: type, ??? size: usize) [???]T {
-    var sequence: [???]T = undefined;
+fn makeSequence(comptime T: type, comptime size: usize) [size]T { // todo x: 2个参数, 都指定编译期检测, 这样才能确保返回值的长度
+    var sequence: [size]T = undefined;
     var i: usize = 0;
 
     while (i < size) : (i += 1) {
-        sequence[i] = @intCast(T, i) + 1;
+        sequence[i] = @intCast(T, i) + 1; // todo x: 编译器内建方法, 整数类型转换
     }
 
     return sequence;
