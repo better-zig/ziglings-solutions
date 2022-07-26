@@ -1,15 +1,15 @@
 //
 // "Compile time" is a program's environment while it is being
-// compiled. In contrast, "run time" is the environment while the
+// compiled. In contrast, "run time" is the environment while the // todo x: 编译期 vs 运行期
 // compiled program is executing (traditionally as machine code
 // on a hardware CPU).
 //
 // Errors make an easy example:
 //
-// 1. Compile-time error: caught by the compiler, usually
+// 1. Compile-time error: caught by the compiler, usually  // todo x: 编译期报错
 //    resulting in a message to the programmer.
 //
-// 2. Runtime error: either caught by the running program itself
+// 2. Runtime error: either caught by the running program itself // todo x: 运行时报错
 //    or by the host hardware or operating system. Could be
 //    gracefully caught and handled or could cause the computer
 //    to crash (or halt and catch fire)!
@@ -55,19 +55,21 @@ pub fn main() void {
     // but we wish to assign them to identifiers which are
     // mutable at runtime.
     //
-    // To be mutable at runtime, these identifiers must refer to
-    // areas of memory. In order to refer to areas of memory, Zig
+    // To be mutable at runtime, these identifiers must refer to // todo x: 实现运行时不可变
+    // areas of memory.
+    // In order to refer to areas of memory, Zig
     // must know exactly how much memory to reserve for these
-    // values. Therefore, it follows that we just specify numeric
+    // values.
+    // Therefore, it follows that we just specify numeric
     // types with specific sizes. The comptime numbers will be
     // coerced (if they'll fit!) into your chosen runtime types.
-    var var_int = 12345;
-    var var_float = 987.654;
+    comptime var var_int: u32 = 12345; // todo x: 编译时关键字, 加不加 comptime 都可
+    comptime var var_float: f32 = 987.654;
 
     // We can change what is stored at the areas set aside for
     // "var_int" and "var_float" in the running compiled program.
-    var_int = 54321;
-    var_float = 456.789;
+    var_int = 54321; // todo x: 动态更改值
+    var_float = 456.789; // todo x: 动态更改值
 
     print("Mutable: {}, {d:.3}; ", .{ var_int, var_float });
 
@@ -77,7 +79,7 @@ pub fn main() void {
     print("Types: {}, {}, {}, {}\n", .{
         @TypeOf(const_int),
         @TypeOf(const_float),
-        @TypeOf(var_int),
+        @TypeOf(var_int), // todo x: 类型确定, 不可更改类型
         @TypeOf(var_float),
     });
 }

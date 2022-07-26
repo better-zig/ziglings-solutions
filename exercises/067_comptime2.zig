@@ -16,7 +16,7 @@
 // As a simple example, compare these two statements:
 //
 //    var bar1 = 5;            // ERROR!
-//    comptime var bar2 = 5;   // OKAY!
+//    comptime var bar2 = 5;   // OKAY! // TODO x: 补充 comptime 关键字
 //
 // The first one gives us an error because Zig assumes mutable
 // identifiers (declared with 'var') will be used at runtime and
@@ -35,9 +35,12 @@ pub fn main() void {
     // In this contrived example, we've decided to allocate some
     // arrays using a variable count! But something's missing...
     //
-    var count = 0;
+    comptime var count = 0; // todo x: 编译期, 补充关键字
+    // var count: u8 = 0; // todo x: 写法无效. 编译期间, count 无效. 只在运行时, 才有效, 故会报错.
 
-    count += 1;
+    count += 1; // todo x: 值更改
+
+    print("count: {}\n", .{count});
     var a1: [count]u8 = .{'A'} ** count;
 
     count += 1;
