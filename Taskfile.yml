@@ -108,7 +108,16 @@ tasks:
 
   dev:
     cmds:
+      - echo "zig build ex"${EXERCISE_NO}
+      - zig build ${EXERCISE_NO}
+
+  dev:all:
+    cmds:
       - zig build
+
+  clean:
+    cmds:
+      - rm -rf zig-cache/
 
   ###########################################################################
 
