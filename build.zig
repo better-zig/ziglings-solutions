@@ -629,10 +629,17 @@ const ZiglingStep = struct {
 
         const argv = [_][]const u8{exe_file};
 
+        // todo x:
         var child = std.ChildProcess.init(&argv, self.builder.allocator);
 
         child.cwd = cwd;
+
+        // todo x: 环境变量
         child.env_map = self.builder.env_map;
+
+        for (argv) |arg| {
+            print("Zig Build Result: {s}\n", .{arg});
+        }
 
         child.stdin_behavior = .Inherit;
         if (self.exercise.check_stdout) {
