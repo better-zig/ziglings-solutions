@@ -1,5 +1,5 @@
 //
-// A sentinel value indicates the end of data. Let's imagine a
+// A sentinel value indicates the end of data. Let's imagine a // todo x : sentinel 哨兵机制
 // sequence of lowercase letters where uppercase 'S' is the
 // sentinel, indicating the end of the sequence:
 //
@@ -18,7 +18,7 @@
 // Zig supports sentinel-terminated arrays, slices, and pointers:
 //
 //     const a: [4:0]u32       =  [4:0]u32{1, 2, 3, 4};
-//     const b: [:0]const u32  = &[4:0]u32{1, 2, 3, 4};
+//     const b: [:0]const u32  = &[4:0]u32{1, 2, 3, 4}; // todo x: 自动推断 数组/切片/指针 的长度
 //     const c: [*:0]const u32 = &[4:0]u32{1, 2, 3, 4};
 //
 // Array 'a' stores 5 u32 values, the last of which is 0.
@@ -72,7 +72,7 @@ pub fn main() void {
 // complete, but there are a couple missing bits. Please fix
 // them!
 fn printSequence(my_seq: anytype) void {
-    const my_typeinfo = @typeInfo(@TypeOf(my_seq));
+    const my_typeinfo = @typeInfo(@TypeOf(my_seq)); // todo x: 类型推断
 
     // The TypeInfo contained in my_type is a union. We use a
     // switch to handle printing the Array or Pointer fields,
@@ -82,19 +82,19 @@ fn printSequence(my_seq: anytype) void {
             print("Array:", .{});
 
             // Loop through the items in my_seq.
-            for (???) |s| {
+            for (my_seq) |s| { // todo x: 遍历序列
                 print("{}", .{s});
             }
         },
         .Pointer => {
             // Check this out - it's pretty cool:
-            const my_sentinel = sentinel(@TypeOf(my_seq));
+            const my_sentinel = sentinel(@TypeOf(my_seq)); // todo x: 自动获取哨兵(边界值)
             print("Many-item pointer:", .{});
 
             // Loop through the items in my_seq until we hit the
             // sentinel value.
             var i: usize = 0;
-            while (??? != my_sentinel) {
+            while (my_seq[i] != my_sentinel) { // todo x: 遍历 + 判断, 是否触达哨兵(边界值)
                 print("{}", .{my_seq[i]});
                 i += 1;
             }
