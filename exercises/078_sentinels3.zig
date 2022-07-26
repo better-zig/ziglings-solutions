@@ -5,10 +5,10 @@
 // But can we ever GO BACK to a sentinel-terminated pointer
 // after we've "lost" the sentinel in a coercion?
 //
-// Yes, we can. Zig's @ptrCast() builtin can do this. Check out
+// Yes, we can. Zig's @ptrCast() builtin can do this. Check out // todo x:  @ptrCast() 内建函数, 指针强制转换
 // the signature:
 //
-//     @ptrCast(comptime DestType: type, value: anytype) DestType
+//     @ptrCast(comptime DestType: type, value: anytype) DestType // todo x: @ptrCast() 内建函数用例
 //
 // See if you can use it to solve the same many-item pointer
 // problem, but without needing a length!
@@ -21,7 +21,7 @@ pub fn main() void {
     const data: [*]const u8 = "Weird Data!";
 
     // Please cast 'data' to 'printable':
-    const printable: [*:0]const u8 = ???;
+    const printable: [*:0]const u8 = @ptrCast([*:0]const u8, data); // todo x: 强制类型转换, 与上个示例题, 对比写法差异
 
     print("{s}\n", .{printable});
 }

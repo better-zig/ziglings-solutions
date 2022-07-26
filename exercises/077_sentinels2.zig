@@ -7,7 +7,7 @@
 //
 // Here it is:
 //
-//     @TypeOf("foo") == *const [3:0]u8
+//     @TypeOf("foo") == *const [3:0]u8  // todo x: 理解此语义, 字符串的类型 = 以 0 结尾的 u8 定长数组
 //
 // Which means a string literal is a "constant pointer to a
 // zero-terminated (null-terminated) fixed-size array of u8".
@@ -19,16 +19,16 @@
 // Why do we bother using a zero/null sentinel to terminate
 // strings in Zig when we already have a known length?
 //
-// Versatility! Zig strings are compatible with C strings (which
+// Versatility! Zig strings are compatible with C strings (which // todo x: zig 字符串, 兼容 C 字符串.
 // are null-terminated) AND can be coerced to a variety of other
 // Zig types:
 //
-//     const a: [5]u8 = "array".*;
-//     const b: *const [16]u8 = "pointer to array";
-//     const c: []const u8 = "slice";
-//     const d: [:0]const u8 = "slice with sentinel";
-//     const e: [*:0]const u8 = "many-item pointer with sentinel";
-//     const f: [*]const u8 = "many-item pointer";
+//     const a: [5]u8 = "array".*; // todo x: 定长数组
+//     const b: *const [16]u8 = "pointer to array"; // todo x: 指针, 指向数组
+//     const c: []const u8 = "slice"; // todo x: 切片
+//     const d: [:0]const u8 = "slice with sentinel"; // TODO x: 切片+尾哨兵
+//     const e: [*:0]const u8 = "many-item pointer with sentinel"; // todo x: 指针(指向一片元素) + 尾哨兵
+//     const f: [*]const u8 = "many-item pointer"; // todo x: 指针(指向一片元素)
 //
 // All but 'f' may be printed. (A many-item pointer without a
 // sentinel is not safe to print because we don't know where it
@@ -37,7 +37,7 @@
 const print = @import("std").debug.print;
 
 const WeirdContainer = struct {
-    data: [*]const u8,
+    data: [*]const u8, // todo x: 指针(无尾哨兵)
     length: usize,
 };
 
@@ -60,7 +60,7 @@ pub fn main() void {
     // length... You've actually solved this problem before!
     //
     // Here's a big hint: do you remember how to take a slice?
-    const printable = ???;
+    const printable = foo.data[0..foo.length]; // todo x: 转换成切片类型
 
     print("{s}\n", .{printable});
 }
