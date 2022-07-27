@@ -3,6 +3,11 @@
 - Ziglings 解题报告
 - 持续更新
 
+> related:
+
+- [zig 中文教程](https://better-zig.github.io/)
+- [better-zig/learn-zig](https://github.com/better-zig/learn-zig): zig 学习练习代码
+
 > 当前版本:
 
 - zig 社区项目, 基本都是基于 zig dev 版本(不维护稳定版本).
