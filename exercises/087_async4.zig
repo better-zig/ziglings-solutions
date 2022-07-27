@@ -11,6 +11,9 @@ const print = @import("std").debug.print;
 
 var global_counter: i32 = 0; // todo x: 全局变量
 
+//
+// todo x: 异步 IO(async + suspend + resume + global var = 共享全局变量通信)
+//
 pub fn main() void {
     var foo_frame = async foo(); // todo x: 异步方法
 
