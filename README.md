@@ -3,12 +3,14 @@
 - Ziglings 解题报告
 - 持续更新
 
-> related:
+## related:
 
 - [zig 中文教程](https://better-zig.github.io/)
 - [better-zig/learn-zig](https://github.com/better-zig/learn-zig): zig 学习练习代码
 
-> 当前版本:
+## 说明:
+
+> Zig 当前版本:
 
 - zig 社区项目, 基本都是基于 zig dev 版本(不维护稳定版本).
 - so, 请使用 dev 版本, 更快追踪最新特性变更
@@ -33,7 +35,6 @@ zig build 84
 
 ```
 
-## 说明:
 
 - 本 repo fork 原项目, 会持续同步更新.
 - 解题报告在 `solutions` 分支.
