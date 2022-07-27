@@ -1,19 +1,19 @@
 # Ziglings Solutions
 
-- Ziglings 解题报告
-- 持续更新
+- [x] Ziglings 解题报告, 已完成.
+- [x] 持续更新
 
 ## related:
 
-- [zig 中文教程](https://better-zig.github.io/)
-- [better-zig/learn-zig](https://github.com/better-zig/learn-zig): zig 学习练习代码
+- [x] [zig 中文教程](https://better-zig.github.io/)
+- [x] [better-zig/learn-zig](https://github.com/better-zig/learn-zig): zig 学习练习代码
 
 ## 说明:
 
 > Zig 当前版本:
 
-- zig 社区项目, 基本都是基于 zig dev 版本(不维护稳定版本).
-- so, 请使用 dev 版本, 更快追踪最新特性变更
+- zig 社区项目, 基本都是基于 `zig dev` 版本(不维护稳定版本).
+- so, 请使用 `dev 版本`, 更快追踪最新特性变更
 
 ```ruby
 ➤ zig version
@@ -35,7 +35,6 @@ zig build 84
 
 ```
 
-
 - 本 repo fork 原项目, 会持续同步更新.
 - 解题报告在 `solutions` 分支.
 
@@ -46,8 +45,8 @@ zig build 84
 
 > [解题进度](./exercises/)
 
-- [x] [ex001](./exercises/001_hello.zig) - [ex083](./exercises/)
-- [ ] [ex083](./exercises/) - [ex091](./exercises/091_async8.zig)
+- [x] [ex001](./exercises/001_hello.zig) - [ex091](./exercises/091_async8.zig)
+- 已完成
 
 > 补充说明:
 
@@ -101,8 +100,13 @@ zig build 84
 - [ex079]() : 命名规则扩展, `@"x-y-z"` 作为命名字段. 比较无聊的`语法糖`.
 - [ex080]() - [ex083](): 泛型数据结构 + 鸭子类型(多态/反射) - `匿名结构体 + @typeName(@TypeOf()) + @as() + @field()`,
   - ⭐⭐⭐
-- [ex084]() - [ex091]() : 异步编程, `async`.
+- [ex084](./exercises/084_async.zig) - [ex091](./exercises/091_async8.zig) : 异步并发编程, `suspend + resume + async + await + nosuspend + panic UB error`.
   - ⭐⭐⭐⭐⭐
+  - [ex084]() - [ex086](): 异步编程, `suspend + resume + async`, 简单用法
+  - [ex087]() : 异步编程, 使用`async + suspend + resume + global var` 全局变量, 实现协程间同步通信.
+  - [ex088]() - [ex089](): 异步编程, 使用`async + await + return` 基于 await 实现协程同步.
+  - [ex090]() : 异步编程, `nosuspend + suspend + panic UB(未定义)错误`
+  - [ex091]() : 异步编程, `suspend + async + resume`, 完整理解每条语句的执行顺序.(控制流切换)
 
 ## 快速开始:
 
