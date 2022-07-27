@@ -81,7 +81,7 @@ fn getBeef(input: u32) u32 {
 // But see what happens when you turn off safety checks by using
 // ReleaseFast mode:
 //
-//     zig run -O ReleaseFast exercises/090_async7.zig
+//     zig run -O ReleaseFast exercises/090_async7.zig // todo x: 编译期忽略安全检查
 //     beef? 0!
 //
 // This is the wrong result. On your computer, you may get a
