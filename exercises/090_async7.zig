@@ -24,6 +24,9 @@
 //
 const print = @import("std").debug.print;
 
+//
+// todo x: 并发编程: 异步 IO(nosuspend + suspend + panic UB(未定义)错误)
+//
 pub fn main() void {
 
     // The main() function can not be async. But we know
