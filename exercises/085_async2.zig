@@ -17,6 +17,9 @@
 //
 const print = @import("std").debug.print;
 
+//
+// todo x: 异步 IO(async + suspend + resume)
+//
 pub fn main() void {
     var foo_frame = async foo(); // todo x: 异步关键字, 控制流切换
 
