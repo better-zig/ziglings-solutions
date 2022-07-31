@@ -20,7 +20,7 @@
             "request": "launch",
             "name": "Debug ex015",
             // "program": "${workspaceFolder}/<executable file>",
-            "program": "${workspaceFolder}/zig-cache/o/4d4038a6b5f29724fa17dccd842081e4/015_for",
+            "program": "${workspaceFolder}/zig-cache/o/a9333ffcfddf7b471e7e17163202b638/015_for",
             "args": [
                 "exercises/015_for.zig"
             ],
