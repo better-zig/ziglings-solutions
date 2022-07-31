@@ -1,0 +1,30 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug ex002",
+            // "program": "${workspaceFolder}/<executable file>",
+            "program": "${workspaceFolder}/zig-cache/o/61ece68b736d12a98d44010040aab147/002_std",
+            "args": [
+                "exercises/002_std.zig"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug ex015",
+            // "program": "${workspaceFolder}/<executable file>",
+            "program": "${workspaceFolder}/zig-cache/o/4d4038a6b5f29724fa17dccd842081e4/015_for",
+            "args": [
+                "exercises/015_for.zig"
+            ],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
